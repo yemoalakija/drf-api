@@ -14,18 +14,27 @@ class PostSerializer(serializers.ModelSerializer):
 
     def validate_image(self, value):
         """Validate image."""
-        if value.size > 1024 * 1024 * 2:
-            raise serializers.ValidationError("Image size too large!")
-        if value.image.format not in ["png", "jpg", "jpeg"]:
-            raise serializers.ValidationError("Image format not supported!")
-        if value.image.width > 4096 or value.image.height > 4096:
-            raise serializers.ValidationError("Image resolution larger than 4096px!")
+        if value:
+            if value.size > 1024 * 1024 * 2:
+                raise serializers.ValidationError("Image size too large!")
+            # if value.image.format not in [".png", ".jpg", ".jpeg"]:
+            #     raise serializers.ValidationError("Image format not supported!")
+            if value.image.width > 4096 or value.image.height > 4096:
+                raise serializers.ValidationError("Image resolution larger than 4096px!")
         return value
 
     def get_is_owner(self, obj):
         """Get is owner."""
         request = self.context["request"]
         return request.user == obj.owner
+
+    def get_profile_id(self, obj):
+        """Get profile id."""
+        return obj.owner.profile.id
+
+    def get_profile_image(self, obj):
+        """Get profile image."""
+        return obj.owner.profile.image.url
 
     class Meta:
         """Meta class."""
@@ -40,4 +49,7 @@ class PostSerializer(serializers.ModelSerializer):
             "content",
             "image",
             "image_filter",
+            "is_owner",
+            "profile_id",
+            "profile_image",
         ]

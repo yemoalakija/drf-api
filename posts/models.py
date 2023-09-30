@@ -7,7 +7,7 @@ from django.contrib.auth.models import User
 class Post(models.Model):
     """Post model."""
     image_filter_choices = [
-        ('_1977', '1977'),
+        ('_2023', '2023'),
         ('9jadishcovery', 'Nigeria'),
         ('gbdishcovery', 'British'),
         ('chndishcovery', 'China'),
@@ -22,6 +22,9 @@ class Post(models.Model):
         ('mexdishcovery', 'Mexico'),
         ('itadishcovery', 'Italy')
     ]
+
+    # Sort the choices alphabetically
+    image_filter_choices = sorted(image_filter_choices, key=lambda x: x[1])
 
     owner = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
