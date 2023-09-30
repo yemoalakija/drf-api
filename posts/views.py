@@ -63,17 +63,3 @@ class PostDetail(APIView):
         post = self.get_object(primary_key)
         post.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-
-
-
-
-    # def delete(self, request):
-    #     """Delete method."""
-    #     post = Post.objects.get(id=request.data["id"])  # pylint: disable=no-member
-    #     post.delete()
-    #     return Response(status=status.HTTP_204_NO_CONTENT)
-
-
-
