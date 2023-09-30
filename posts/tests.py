@@ -6,6 +6,7 @@ from rest_framework.test import APITestCase
 from .models import Post
 
 
+# Create your tests here.
 class PostListViewTests(APITestCase):
     """Post list view test."""
 
@@ -44,3 +45,24 @@ class PostListViewTests(APITestCase):
         )
         self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         self.assertEqual(Post.objects.count(), 0)
+
+
+class PostDetailTestCase(APITestCase):
+    """Post detail view test case."""
+    def setUp(self):
+        testuser = User.objects.create_user(username='testuser', password='password')
+        testuserfake = User.objects.create_user(username='testuserfake', password='password')
+        Post.objects.create(owner=testuser, title='Test post', content='Test content')
+        Post.objects.create(owner=testuserfake, title='Test post 2', content='Test user fake content')
+
+    def test_retrieve_post_with_valid_id(self):
+        """Test retrieve post with valid id."""
+
+    def test_retrieve_post_with_invalid_id(self):
+        """Test retrieve post with invalid id."""
+
+    def test_update_post_owned_by_user(self):
+        """Test update post owned by user."""
+
+    def test_update_post_not_owned_by_user(self):
+        """Test update post not owned by user."""

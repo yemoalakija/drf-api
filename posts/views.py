@@ -5,7 +5,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from drf_api.permissions import IsOwnerOrReadOnly
 from .models import Post
-from .serialiazers import PostSerializer
+from .serializers import PostSerializer
 
 
 # Create your views here.
