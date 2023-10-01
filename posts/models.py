@@ -8,7 +8,7 @@ class Post(models.Model):
     """Post model."""
     image_filter_choices = [
         ('_2023', '2023'),
-        ('9jadishcovery', 'Nigeria'),
+        ('9jadishcovery🏁', 'Nigeria'),
         ('gbdishcovery', 'British'),
         ('chndishcovery', 'China'),
         ('francedishcovery', 'France'),

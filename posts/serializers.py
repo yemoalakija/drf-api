@@ -1,5 +1,6 @@
 """Posts serializers."""
 from rest_framework import serializers
+from likes.models import Like
 from .models import Post
 
 
@@ -11,6 +12,7 @@ class PostSerializer(serializers.ModelSerializer):
     is_owner = serializers.SerializerMethodField()
     profile_id = serializers.SerializerMethodField(source="owner.profile.id")
     profile_image = serializers.SerializerMethodField(source="owner.profile.image.url")
+    like_id = serializers.SerializerMethodField()
 
     def validate_image(self, value):
         """Validate image."""
@@ -36,6 +38,14 @@ class PostSerializer(serializers.ModelSerializer):
         """Get profile image."""
         return obj.owner.profile.image.url
 
+    def get_like_id(self, obj):
+        """Get like id."""
+        user = self.context["request"].user
+        if user.is_authenticated:
+            like = Like.objects.filter(owner=user, post=obj).first()  # pylint: disable=no-member
+            return like.id if like else None
+        return None
+
     class Meta:
         """Meta class."""
 
@@ -52,4 +62,5 @@ class PostSerializer(serializers.ModelSerializer):
             "content",
             "image",
             "image_filter",
+            "like_id",
         ]
