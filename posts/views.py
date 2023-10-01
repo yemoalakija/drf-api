@@ -1,6 +1,7 @@
 # pylint: disable=no-member
 """This module contains the views for the posts app."""
 from django.db.models import Count
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import generics, permissions, filters
 from drf_api.permissions import IsOwnerOrReadOnly
 from .models import Post
@@ -16,7 +17,8 @@ class PostList(generics.ListCreateAPIView):
     ).order_by("-created_at")
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    filter_backends = [filters.OrderingFilter, filters.SearchFilter]
+    filter_backends = [filters.OrderingFilter, filters.SearchFilter, DjangoFilterBackend]
+    filterset_fields = ["owner__followed__owner__profile", "likes__owner__profile", "owner__profile",]
     search_fields = ["owner__username", "title",]
     ordering_fields = [
         "likes_count",
