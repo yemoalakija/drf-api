@@ -1,3 +1,4 @@
+# pylint: disable=no-member
 """Profiles serializers."""
 from rest_framework import serializers
 from followers.serializers import Follower
@@ -10,6 +11,9 @@ class ProfileSerializer(serializers.ModelSerializer):
     owner = serializers.ReadOnlyField(source="owner.username")
     is_owner = serializers.SerializerMethodField()
     following_id = serializers.SerializerMethodField()
+    posts_count = serializers.ReadOnlyField()
+    followers_count = serializers.ReadOnlyField()
+    following_count = serializers.ReadOnlyField()
 
     def get_is_owner(self, obj):
         """Get is owner."""
@@ -20,9 +24,8 @@ class ProfileSerializer(serializers.ModelSerializer):
         """Get following id."""
         user = self.context["request"].user
         if user.is_authenticated:
-            following = Follower.objects.filter(owner=user, followed=obj.owner).first()  # pylint: disable=no-member
-            if following:
-                return following.id if following else None
+            following = Follower.objects.filter(owner=user, followed=obj.owner).first()
+            return following.id if following else None
         return None
 
     class Meta:
@@ -39,4 +42,7 @@ class ProfileSerializer(serializers.ModelSerializer):
             "content",
             "image",
             "following_id",
+            "posts_count",
+            "followers_count",
+            "following_count",
         ]

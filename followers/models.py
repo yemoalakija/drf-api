@@ -1,12 +1,12 @@
 """Followers models."""
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
 
 
 # Create your models here.
 class Follower(models.Model):
     """Follower model."""
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='following')
     followed = models.ForeignKey(User, on_delete=models.CASCADE, related_name='followed')
     created_at = models.DateTimeField(auto_now_add=True)
 
