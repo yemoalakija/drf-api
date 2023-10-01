@@ -114,7 +114,11 @@ else:
         r"^https://.*\.github\.dev$",
     ]
 
-CORS_ALLOWED_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",
+    "https://probable-fortnight-76j9q779wvp3r7vp-8000.app.github.dev",
+    "http://localhost:3000",
+]
 
 ROOT_URLCONF = "drf_api.urls"
 
