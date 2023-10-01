@@ -16,7 +16,8 @@ class PostList(generics.ListCreateAPIView):
     ).order_by("-created_at")
     serializer_class = PostSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-    filter_backends = [filters.OrderingFilter]
+    filter_backends = [filters.OrderingFilter, filters.SearchFilter]
+    search_fields = ["owner__username", "title",]
     ordering_fields = [
         "likes_count",
         "comments_count",
