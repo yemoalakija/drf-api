@@ -64,7 +64,7 @@ DEBUG = "DEV" in os.environ  # Set DEBUG to True if DEV is set to 1 in environme
 ALLOWED_HOSTS = [
     "localhost",
     "https://dishcovery-api-171863f54986.herokuapp.com",
-    "dishcovery-api-171863f54986.herokuapp.com"
+    "dishcovery-api-171863f54986.herokuapp.com",
 ]
 
 # Application definition
@@ -123,9 +123,12 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "http://localhost:3000",
+    "localhost",
+    "https://dishcovery-api-171863f54986.herokuapp.com",
+    "dishcovery-api-171863f54986.herokuapp.com",
 ]
 
-USE_X_FORWARDED_HOST = True
+# USE_X_FORWARDED_HOST = True
 
 ROOT_URLCONF = "drf_api.urls"
 
