@@ -64,6 +64,7 @@ DEBUG = "DEV" in os.environ  # Set DEBUG to True if DEV is set to 1 in environme
 ALLOWED_HOSTS = [
     "localhost",
     "dishcovery-api-171863f54986.herokuapp.com",
+    "probable-fortnight-76j9q779wvp3r7vp-8000.app.github.dev",
 ]
 
 if 'CLIENT_ORIGIN_DEV' in os.environ:
