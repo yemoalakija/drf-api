@@ -43,9 +43,9 @@ if "DEV" not in os.environ:
 
 REST_USE_JWT = True
 JWT_AUTH_SECURE = True
-JWT_AUTH_COOKIE = "my-app-auth"
-JWT_AUTH_REFRESH_COOKIE = "my-app-refresh"
-JWT_AUTH_SAMESITE = "None"
+JWT_AUTH_COOKIE = 'my-app-auth'
+JWT_AUTH_REFRESH_COOKIE = 'my-refresh-token'
+JWT_AUTH_SAMESITE = 'None'
 
 REST_AUTH_SERIALIZERS = {
     "USER_DETAILS_SERIALIZER": "drf_api.serializers.CurrentUserSerializer",
@@ -63,9 +63,22 @@ DEBUG = "DEV" in os.environ  # Set DEBUG to True if DEV is set to 1 in environme
 
 ALLOWED_HOSTS = [
     "localhost",
-    "https://dishcovery-api-171863f54986.herokuapp.com",
-    # "dishcovery-api-171863f54986.herokuapp.com",
+    "dishcovery-api-171863f54986.herokuapp.com",
 ]
+
+if 'CLIENT_ORIGIN_DEV' in os.environ:
+    extracted_url = re.match(
+        r'^.+-',
+        os.environ.get('CLIENT_ORIGIN_DEV', ''),
+    )
+    if extracted_url:
+        CORS_ALLOWED_ORIGIN_REGEXES = [
+            f"{extracted_url.group(0)}\\w+\\.github\\.dev$",
+        ]
+
+COR_ALLOW_CREDENTIALS = True
+
+USE_X_FORWARDED_HOST = True
 
 # Application definition
 
@@ -110,22 +123,6 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-if 'CLIENT_ORIGIN_DEV' in os.environ:
-    extracted_url = re.match(
-        r'^.+-',
-        os.environ.get('CLIENT_ORIGIN_DEV', ''),
-    )
-    if extracted_url:
-        CORS_ALLOWED_ORIGIN_REGEXES = [
-            f"{extracted_url.group(0)}\\w+\\.github\\.dev$",
-        ]
-
-CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8000",
-    "http://localhost:3000",
-]
-
-# USE_X_FORWARDED_HOST = True
 
 ROOT_URLCONF = "drf_api.urls"
 
