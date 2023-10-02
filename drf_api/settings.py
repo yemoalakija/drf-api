@@ -61,7 +61,11 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = "DEV" in os.environ  # Set DEBUG to True if DEV is set to 1 in environment variables
 
-ALLOWED_HOSTS = ["localhost", "https://dishcovery-api-171863f54986.herokuapp.com"]
+ALLOWED_HOSTS = [
+    "localhost",
+    "https://dishcovery-api-171863f54986.herokuapp.com",
+    "dishcovery-api-171863f54986.herokuapp.com"
+]
 
 # Application definition
 
@@ -120,6 +124,8 @@ CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "http://localhost:3000",
 ]
+
+USE_X_FORWARDED_HOST = True
 
 ROOT_URLCONF = "drf_api.urls"
 
