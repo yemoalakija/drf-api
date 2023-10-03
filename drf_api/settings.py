@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
-import re
+# import re
 import dj_database_url
 import dotenv
 
@@ -69,15 +69,21 @@ ALLOWED_HOSTS = [
     "http://localhost:8000",
 ]
 
-if 'CLIENT_ORIGIN_DEV' in os.environ:
-    extracted_url = re.match(
-        r'^.+-',
-        os.environ.get('CLIENT_ORIGIN_DEV', ''),
-    )
-    if extracted_url:
-        CORS_ALLOWED_ORIGIN_REGEXES = [
-            f"{extracted_url.group(0)}\\w+\\.github\\.dev$",
-        ]
+# if 'CLIENT_ORIGIN_DEV' in os.environ:
+#     extracted_url = re.match(
+#         r'^.+-',
+#         os.environ.get('CLIENT_ORIGIN_DEV', ''),
+#     )
+#     if extracted_url:
+#         CORS_ALLOWED_ORIGIN_REGEXES = [
+#             f"{extracted_url.group(0)}\\w+\\.github\\.dev$",
+#         ]
+
+CORS_ALLOWED_ORIGINS = [
+    "https://cuddly-xylophone-gjvq9xxq4gphq9q-3000.app.github.dev",
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+]
 
 COR_ALLOW_CREDENTIALS = True
 
