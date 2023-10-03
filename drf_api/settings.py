@@ -65,6 +65,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "dishcovery-api-171863f54986.herokuapp.com",
     "probable-fortnight-76j9q779wvp3r7vp-8000.app.github.dev",
+    "http://localhost:8000",
 ]
 
 if 'CLIENT_ORIGIN_DEV' in os.environ:
@@ -79,7 +80,7 @@ if 'CLIENT_ORIGIN_DEV' in os.environ:
 
 COR_ALLOW_CREDENTIALS = True
 
-USE_X_FORWARDED_HOST = True
+# USE_X_FORWARDED_HOST = True
 
 # Application definition
 
