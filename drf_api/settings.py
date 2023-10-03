@@ -65,6 +65,7 @@ ALLOWED_HOSTS = [
     "localhost",
     "dishcovery-api-171863f54986.herokuapp.com",
     "probable-fortnight-76j9q779wvp3r7vp-8000.app.github.dev",
+    "dishcovery-api.onrender.com",
     "http://localhost:8000",
 ]
 
