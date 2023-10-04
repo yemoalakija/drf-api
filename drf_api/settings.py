@@ -80,7 +80,7 @@ ALLOWED_HOSTS = [
 #         ]
 
 CORS_ALLOWED_ORIGINS = [
-    "https://cuddly-xylophone-gjvq9xxq4gphq9q-3000.app.github.dev",
+    "https://fluffy-fishstick-9rg9v6695j9c779r-3000.app.github.dev",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
 ]
