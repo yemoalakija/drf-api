@@ -83,7 +83,6 @@ CORS_ALLOWED_ORIGINS = [
     "https://fluffy-fishstick-9rg9v6695j9c779r-3000.app.github.dev",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "https://fuzzy-potato-qjpvj9xg9xxfxp4j-3000.app.github.dev",
 ]
 
 CORS_ALLOW_CREDENTIALS = True
