@@ -66,6 +66,7 @@ ALLOWED_HOSTS = [
     "dishcovery-api-171863f54986.herokuapp.com",
     "probable-fortnight-76j9q779wvp3r7vp-8000.app.github.dev",
     "drf-api-h5jk.onrender.com",
+    "8000-yemoalakija-drf-api-b5vxsy6kzz.us2.codeanyapp.com",
     "http://localhost:8000",
 ]
 
@@ -81,6 +82,8 @@ ALLOWED_HOSTS = [
 
 CORS_ALLOWED_ORIGINS = [
     "https://fluffy-fishstick-9rg9v6695j9c779r-3000.app.github.dev",
+    "https://yemoalakija-drf-api-b5vxsy6kzz.us2.codeanyapp.com",
+    "https://3000-yemoalakija-dishcovery-i1fxkcthde.us2.codeanyapp.com",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
 ]
