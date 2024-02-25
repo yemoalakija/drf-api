@@ -13,7 +13,6 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 
 from pathlib import Path
 import os
-# import re
 import dj_database_url
 import dotenv
 
@@ -64,21 +63,12 @@ DEBUG = "DEV" in os.environ  # Set DEBUG to True if DEV is set to 1 in environme
 ALLOWED_HOSTS = [
     "localhost",
     "dishcovery-api-171863f54986.herokuapp.com",
+    "super-duper-space-acorn-76j9q7795jp2ww6g.github.dev",
     "probable-fortnight-76j9q779wvp3r7vp-8000.app.github.dev",
     "drf-api-h5jk.onrender.com",
     "8000-yemoalakija-drf-api-b5vxsy6kzz.us2.codeanyapp.com",
     "http://localhost:8000",
 ]
-
-# if 'CLIENT_ORIGIN_DEV' in os.environ:
-#     extracted_url = re.match(
-#         r'^.+-',
-#         os.environ.get('CLIENT_ORIGIN_DEV', ''),
-#     )
-#     if extracted_url:
-#         CORS_ALLOWED_ORIGIN_REGEXES = [
-#             f"{extracted_url.group(0)}\\w+\\.github\\.dev$",
-#         ]
 
 CORS_ALLOWED_ORIGINS = [
     "https://fluffy-fishstick-9rg9v6695j9c779r-3000.app.github.dev",
